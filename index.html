@@ -3,146 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoTech-DMR4 | Manual Pro NS200</title>
+    <title>MotoTech-DMR4 | Manual Maestro NS200</title>
     <style>
-        :root {
-            --bg: #0a0a0a;
-            --card: #161616;
-            --neon-blue: #00f2ff;
-            --neon-green: #39ff14;
-            --text: #ffffff;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 15px;
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 2px solid var(--neon-blue);
-            margin-bottom: 20px;
-            padding: 10px;
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        h1 { margin: 0; font-size: 1.5rem; color: var(--neon-blue); }
-
-        .card {
-            background: var(--card);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-        }
-
-        .card h2 { 
-            color: var(--neon-green); 
-            font-size: 1.1rem; 
-            margin-top: 0;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-        }
-
-        .spec-item { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9rem; }
-        .label { color: var(--neon-blue); font-weight: bold; }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            background: #000;
-            border: 1px solid var(--neon-blue);
-            color: #fff;
-            box-sizing: border-box;
-            border-radius: 4px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            background: transparent;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn:active { background: var(--neon-green); color: #000; }
-
-        #result { color: var(--neon-blue); margin-top: 10px; font-weight: bold; text-align: center; }
+        :root { --bg: #050505; --card: #121212; --blue: #00e5ff; --green: #39ff14; --red: #ff3131; --text: #e0e0e0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 15px; }
+        header { text-align: center; border-bottom: 2px solid var(--blue); padding: 10px; margin-bottom: 20px; box-shadow: 0 0 15px var(--blue); }
+        .card { background: var(--card); border: 1px solid #333; border-radius: 10px; padding: 15px; margin-bottom: 20px; }
+        h2 { color: var(--green); font-size: 1.1rem; border-bottom: 1px solid #444; padding-bottom: 5px; text-transform: uppercase; }
+        .spec { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.85rem; }
+        .label { color: var(--blue); font-weight: bold; }
+        img { width: 100%; border-radius: 5px; border: 1px solid var(--blue); margin: 10px 0; }
+        .alert { background: #200; border: 1px solid var(--red); padding: 10px; border-radius: 5px; font-size: 0.8rem; }
+        .btn { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--blue); color: var(--blue); font-weight: bold; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>MOTOTECH-DMR4</h1>
-    <small>Engine Mastery | Pulsar NS200 FI ABS</small>
+    <small>SABIDURÍA MECÁNICA BY @DENTALMOVILR4</small>
 </header>
 
 <div class="card">
-    <h2>🛠️ AJUSTES DE PRECISIÓN</h2>
-    <div class="spec-item"><span class="label">Válvula Admisión:</span> 0.05 mm</div>
-    <div class="spec-item"><span class="label">Válvula Escape:</span> 0.08 mm</div>
-    <div class="spec-item"><span class="label">Luz de Bujía:</span> 0.7 - 0.8 mm</div>
-    <div class="spec-item"><span class="label">Aceite (Total):</span> 1.2 Litros</div>
-    <div class="spec-item"><span class="label">Líquido Frenos:</span> DOT 4</div>
+    <h2>🔍 SENSORES FI (MAP, O2, IAC)</h2>
+    <img src="https://i.postimg.cc/mD3H9v2m/sensors-ns200.jpg" alt="Mapa Sensores">
+    <div class="spec"><span class="label">Falla Sensor MAP:</span> Moto se ahoga al acelerar fuerte.</div>
+    <div class="spec"><span class="label">Falla Sensor O2:</span> Humo negro y consumo excesivo.</div>
+    <div class="spec"><span class="label">Falla Válvula IAC:</span> Se apaga sola en semáforos (mínima).</div>
+    <div class="alert">TIP: Si falla el ralentí, limpia la IAC con Contact Cleaner, ¡nunca con gasolina!</div>
 </div>
 
 <div class="card">
-    <h2>🚀 ESCÁNER DE ERRORES FI</h2>
-    <input type="text" id="errorInput" placeholder="Código (Ej: P0107)">
-    <button class="btn" onclick="buscarError()">Escanear Sistema</button>
-    <div id="result">Esperando código...</div>
+    <h2>🧰 HERRAMIENTAS PRO</h2>
+    <div class="spec"><span class="label">OBD2 + 6 Pines:</span> Conecta bajo el asiento para borrar "Check Engine".</div>
+    <div class="spec"><span class="label">Torquímetro:</span> Vital para culata (25Nm) y ejes (90Nm).</div>
+    <div class="spec"><span class="label">Copa Torre:</span> Para soltar la tuerca del filtro centrífugo y embrague.</div>
 </div>
 
 <div class="card">
-    <h2>📅 BITÁCORA DE TALLER</h2>
-    <input type="text" id="maintInput" placeholder="¿Qué le hiciste hoy?">
-    <button class="btn" onclick="guardarMantenimiento()" style="border-color: var(--neon-blue); color: var(--neon-blue);">Registrar</button>
-    <p id="lastLog" style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;"></p>
+    <h2>🛢️ FLUIDOS E INGENIERÍA</h2>
+    <div class="spec"><span class="label">Aceite Sugerido:</span> 10W50 o 20W50 (Sintético) JASO MA2.</div>
+    <div class="spec"><span class="label">Horquillas (Barras):</span> Cambiar aceite cada 15,000 km (Aceite 10W o 15W).</div>
+    <div class="spec"><span class="label">Embrague:</span> Si patina al acelerar a fondo, toca cambio de discos.</div>
+</div>
+
+<div class="card">
+    <h2>⚡ SISTEMA ELÉCTRICO</h2>
+    <div class="spec"><span class="label">Caja Fusibles:</span> Bajo el asiento del conductor. Revisa si no prende tablero.</div>
+    <div class="spec"><span class="label">ECU:</span> No desconectar sensores con el switch abierto o quemarás la compu.</div>
+    <div class="alert">¡RECORDAR! Negro (-) se va primero, Rojo (+) llega primero.</div>
+</div>
+
+<div class="card">
+    <h2>⛽ CONSUMO</h2>
+    <input type="number" id="km" placeholder="KM" style="width:45%; padding:5px;">
+    <input type="number" id="gal" placeholder="GAL" style="width:45%; padding:5px;">
+    <button class="btn" onclick="calc()">CALCULAR</button>
+    <div id="res" style="margin-top:10px; text-align:center;"></div>
 </div>
 
 <script>
-    // Base de datos de sabiduría mecánica FI
-    const database = {
-        "P0107": "Sensor MAP: Voltaje Bajo. Revisa mangueras de vacío.",
-        "P0108": "Sensor MAP: Voltaje Alto. Posible corto en sensor.",
-        "P0113": "Sensor IAT: Temp. Aire Alta. Revisa sensor de admisión.",
-        "P0118": "Sensor ECT: Temp. Motor Alta. ¡Revisa refrigerante!",
-        "P0505": "Válvula IAC: Ralentí inestable. Limpia el bypass.",
-        "P0131": "Sonda Lambda: Mezcla Pobre. Revisa entradas de aire.",
-        "P0132": "Sonda Lambda: Mezcla Rica. Revisa inyector o filtro aire."
-    };
-
-    function buscarError() {
-        const cod = document.getElementById('errorInput').value.toUpperCase();
-        const res = database[cod] || "Código desconocido. Verifica conexión física.";
-        document.getElementById('result').innerText = res;
-    }
-
-    function guardarMantenimiento() {
-        const msj = document.getElementById('maintInput').value;
-        if(msj) {
-            const fecha = new Date().toLocaleDateString();
-            const log = `Último: ${msj} (${fecha})`;
-            localStorage.setItem('moto_log', log);
-            document.getElementById('lastLog').innerText = log;
-            alert("¡Registrado en el historial del taller!");
-        }
-    }
-
-    // Cargar último registro al abrir
-    window.onload = () => {
-        const saved = localStorage.getItem('moto_log');
-        if(saved) document.getElementById('lastLog').innerText = saved;
+    function calc() {
+        const k = document.getElementById('km').value;
+        const g = document.getElementById('gal').value;
+        if(k&&g) document.getElementById('res').innerText = (k/g).toFixed(1) + " km/gal";
     }
 </script>
 
 </body>
 </html>
+
