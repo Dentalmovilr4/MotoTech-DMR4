@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotoTech-DMR4 | Manual Maestro NS200</title>
     <style>
-        :root { --bg: #050505; --card: #121212; --blue: #00e5ff; --green: #39ff14; --red: #ff3131; --text: #e0e0e0; }
+        :root { --bg: #050505; --card: #121212; --blue: #00e5ff; --green: #39ff14; --red: #ff3131; --text: #e0e0e0; --orange: #ffab40; }
         body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; margin: 0; padding: 15px; }
         header { text-align: center; border-bottom: 2px solid var(--blue); padding: 10px; margin-bottom: 20px; box-shadow: 0 0 15px var(--blue); }
         .card { background: var(--card); border: 1px solid #333; border-radius: 10px; padding: 15px; margin-bottom: 20px; }
-        h2 { color: var(--green); font-size: 1.1rem; border-bottom: 1px solid #444; padding-bottom: 5px; text-transform: uppercase; }
-        .spec { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.85rem; }
+        h2 { color: var(--green); font-size: 1.1rem; border-bottom: 1px solid #444; padding-bottom: 5px; text-transform: uppercase; margin-top: 0; }
+        .spec { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.85rem; border-bottom: 1px dotted #222; }
         .label { color: var(--blue); font-weight: bold; }
-        img { width: 100%; border-radius: 5px; border: 1px solid var(--blue); margin: 10px 0; }
-        .alert { background: #200; border: 1px solid var(--red); padding: 10px; border-radius: 5px; font-size: 0.8rem; }
+        .alert { background: #200; border: 1px solid var(--red); padding: 10px; border-radius: 5px; font-size: 0.8rem; margin-top: 10px; }
+        .warning { border: 1px solid var(--orange); color: var(--orange); padding: 10px; border-radius: 5px; font-size: 0.8rem; }
+        table { width: 100%; font-size: 0.8rem; border-collapse: collapse; margin: 10px 0; }
+        th { color: var(--blue); border-bottom: 1px solid var(--blue); text-align: left; }
+        td { padding: 5px 0; }
         .btn { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--blue); color: var(--blue); font-weight: bold; cursor: pointer; margin-top: 10px; }
+        input { background: #222; border: 1px solid #444; color: white; padding: 8px; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -25,56 +29,80 @@
 </header>
 
 <div class="card">
-    <h2>🔍 SENSORES FI (MAP, O2, IAC)</h2>
-    <img src="https://i.postimg.cc/mD3H9v2m/sensors-ns200.jpg" alt="Mapa Sensores">
-    <div class="spec"><span class="label">Falla Sensor MAP:</span> Moto se ahoga al acelerar fuerte.</div>
-    <div class="spec"><span class="label">Falla Sensor O2:</span> Humo negro y consumo excesivo.</div>
-    <div class="spec"><span class="label">Falla Válvula IAC:</span> Se apaga sola en semáforos (mínima).</div>
-    <div class="alert">TIP: Si falla el ralentí, limpia la IAC con Contact Cleaner, ¡nunca con gasolina!</div>
+    <h2>🔍 DIAGNÓSTICO FI (SENSORES)</h2>
+    <div class="spec"><span class="label">MAP:</span> Ahogo al acelerar a fondo.</div>
+    <div class="spec"><span class="label">O2:</span> Humo negro y alto consumo.</div>
+    <div class="spec"><span class="label">IAC:</span> Ralentí inestable (se apaga).</div>
+    <div class="alert">TIP: Limpia la IAC con Contact Cleaner. ¡No uses gasolina!</div>
 </div>
 
 <div class="card">
-    <h2>🧰 HERRAMIENTAS PRO</h2>
-    <div class="spec"><span class="label">OBD2 + 6 Pines:</span> Conecta bajo el asiento para borrar "Check Engine".</div>
-    <div class="spec"><span class="label">Torquímetro:</span> Vital para culata (25Nm) y ejes (90Nm).</div>
-    <div class="spec"><span class="label">Copa Torre:</span> Para soltar la tuerca del filtro centrífugo y embrague.</div>
+    <h2>📏 HOLGURA DE VÁLVULAS (FRÍO)</h2>
+    <table>
+        <tr><th>POSICIÓN</th><th>MEDIDA</th><th>HERRAMIENTA</th></tr>
+        <tr><td>Admisión</td><td>0.05 mm</td><td>Galga/Sonda</td></tr>
+        <tr><td>Escape</td><td>0.08 mm</td><td>Galga/Sonda</td></tr>
+    </table>
+    <p style="font-size: 0.7rem; color: #888;">* Calibrar siempre con motor a temperatura ambiente (< 35°C).</p>
 </div>
 
 <div class="card">
-    <h2>🛢️ FLUIDOS E INGENIERÍA</h2>
-    <div class="spec"><span class="label">Aceite Sugerido:</span> 10W50 o 20W50 (Sintético) JASO MA2.</div>
-    <div class="spec"><span class="label">Horquillas (Barras):</span> Cambiar aceite cada 15,000 km (Aceite 10W o 15W).</div>
-    <div class="spec"><span class="label">Embrague:</span> Si patina al acelerar a fondo, toca cambio de discos.</div>
+    <h2>🚨 CÓDIGOS DE FALLA (TESTIGO)</h2>
+    <div class="spec"><span>1 Largo, 2 Cortos (12):</span> <span style="color:var(--orange)">Falla IAT</span></div>
+    <div class="spec"><span>2 Largos, 1 Corto (21):</span> <span style="color:var(--orange)">Falla O2</span></div>
+    <div class="spec"><span>3 Largos, 3 Cortos (33):</span> <span style="color:var(--orange)">Inyector</span></div>
 </div>
 
 <div class="card">
-    <h2>⚡ SISTEMA ELÉCTRICO</h2>
-    <div class="spec"><span class="label">Caja Fusibles:</span> Bajo el asiento del conductor. Revisa si no prende tablero.</div>
-    <div class="spec"><span class="label">ECU:</span> No desconectar sensores con el switch abierto o quemarás la compu.</div>
-    <div class="alert">
-    <h3 style="color: #ff3131; margin: 0 0 5px 0; font-size: 0.9rem;">⚠️ PROTOCOLO ELÉCTRICO SEGURO</h3>
-    <p style="margin: 5px 0;"><b>1. PARA RETIRAR (Desconectar):</b> Primero el <b>NEGRO (-)</b>, luego el ROJO (+).</p>
-    <p style="margin: 5px 0;"><b>2. PARA INSTALAR (Conectar):</b> Primero el <b>ROJO (+)</b>, luego el NEGRO (-).</p>
-    <hr style="border: 0.5px dashed #500;">
-    <p style="font-size: 0.75rem; opacity: 0.9;"><i>Razón: Evita cortocircuitos si la herramienta toca el chasis mientras manipulas el polo positivo.</i></p>
+    <h2>🛢️ MANTENIMIENTO TÉCNICO</h2>
+    <div class="spec"><span class="label">Kit Arrastre:</span> Juego de 20-30 mm.</div>
+    <div class="spec"><span class="label">Refrigerante:</span> Etilenglicol 50/50 (1 Litro).</div>
+    <div class="spec"><span class="label">Presión Llantas:</span> Del: 25psi | Tras: 28-32psi.</div>
+    <div class="warning">DATO: El ventilador debe activar a los 98°C.</div>
+</div>
+
+<div class="card" style="border-color: var(--red);">
+    <h2 style="color: var(--red);">⚡ PROTOCOLO BATERÍA</h2>
+    <p style="font-size: 0.8rem;"><b>RETIRAR:</b> NEGRO(-) → ROJO(+)</p>
+    <p style="font-size: 0.8rem;"><b>INSTALAR:</b> ROJO(+) → NEGRO(-)</p>
+    <div class="alert">PROHIBIDO: Desconectar sensores con el switch abierto.</div>
 </div>
 
 <div class="card">
-    <h2>⛽ CONSUMO</h2>
-    <input type="number" id="km" placeholder="KM" style="width:45%; padding:5px;">
-    <input type="number" id="gal" placeholder="GAL" style="width:45%; padding:5px;">
-    <button class="btn" onclick="calc()">CALCULAR</button>
-    <div id="res" style="margin-top:10px; text-align:center;"></div>
+    <h2>⛽ CALCULADORA DE CONSUMO</h2>
+    <div style="display: flex; gap: 10px;">
+        <input type="number" id="km" placeholder="KM Recorridos" style="width: 50%;">
+        <input type="number" id="gal" placeholder="Galones" style="width: 50%;">
+    </div>
+    <button class="btn" onclick="calc()">ANALIZAR EFICIENCIA</button>
+    <div id="res" style="margin-top:15px; text-align:center; font-weight: bold;"></div>
 </div>
 
 <script>
     function calc() {
         const k = document.getElementById('km').value;
         const g = document.getElementById('gal').value;
-        if(k&&g) document.getElementById('res').innerText = (k/g).toFixed(1) + " km/gal";
+        const res = document.getElementById('res');
+        
+        if(k && g) {
+            const rend = (k/g).toFixed(1);
+            let msg = rend + " KM/GAL";
+            
+            if(rend < 110) {
+                res.style.color = "#ff3131";
+                res.innerHTML = msg + "<br><small style='font-weight:normal;'>⚠️ BAJO RENDIMIENTO: Revisa filtro de aire o bujías.</small>";
+            } else {
+                res.style.color = "#39ff14";
+                res.innerHTML = msg + "<br><small style='font-weight:normal;'>✅ CONSUMO ÓPTIMO</small>";
+            }
+        } else {
+            res.innerText = "Ingresa datos válidos";
+            res.style.color = "white";
+        }
     }
 </script>
 
 </body>
 </html>
+
 
